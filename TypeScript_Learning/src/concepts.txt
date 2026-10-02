@@ -1,2 +1,3 @@
 Inference
 Type Widening
+Narrowing (type casting)

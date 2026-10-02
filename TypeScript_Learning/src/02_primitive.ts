@@ -26,4 +26,5 @@ const hugeNumber: bigint = 9007199254740991n; // Inferred as bigint
 
 
 // 7. symbol
-let uniqueKey: unique symbol = Symbol("description"); // Inferred as symbol
+let unique = Symbol("desc");
+const uniqueKey: unique symbol = Symbol("description"); // Inferred as symbol // type -> uniqueKey
