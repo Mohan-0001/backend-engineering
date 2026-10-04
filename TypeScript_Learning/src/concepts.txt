@@ -1,3 +1,8 @@
 Inference
 Type Widening
 Narrowing (type casting)
+Index Signatures
+TypeScript Utilities Types: 
+    Record
+    Partial
+    

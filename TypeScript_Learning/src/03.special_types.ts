@@ -77,3 +77,5 @@ async function getUser() {
 }
 
 getUser();
+
+export {};
