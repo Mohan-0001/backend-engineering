@@ -9,4 +9,5 @@ Type Literals
     String Literal Types
     Number Literal Types
     Enum Literal Types
-    
+Type Assertions
+as_const
