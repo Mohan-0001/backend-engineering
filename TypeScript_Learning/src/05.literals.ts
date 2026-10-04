@@ -23,10 +23,11 @@ let d2:Direction = "left";
 move(d2);
 
 //  Enum Type Literals -> An enum is a way to define a named set of related constants:
-enum Status {
+// so in enums is like it's help to define all the constraints / constants in one place and use it whenever you wanted using name.constaints in that file (or import that enum);
+enum Status2 {
   Success,
   Error,
   Loading
 }
 
-let status: Status = Status.Success;
+let status2: Status2 = Status2.Success;
