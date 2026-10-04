@@ -16,7 +16,7 @@
 // on the other stage if you declare it with value then the scope is narrow down to that value and now it perform according to that value type
 
 // eg
-let Name : string | undefined 
+let Name : string | undefined ;
 if (Name !== undefined) {
   console.log(Name.toLocaleLowerCase()); // ✅
 }
@@ -53,9 +53,27 @@ console.log(data.foo.doo) // will make a runtime error but tsc do not flag this
 
 // unknown → "I don't know yet; make me check before using."
 
-let data1: unknown = "Mohan";
+async function getUser() {
+  try{
+  const response = await fetch(
+    "https://jsonplaceholder.typicode.com/users/1"
+  );
 
-// Check the type first before calling string methods:
-if (typeof data1 === "string") {
-  data1.toUpperCase(); // ✅ Valid! TS knows 'data1' is a string inside this block.
+  if(!response.ok){
+    throw new Error(`HTTP Error: ${response.status}`)
+  }
+  const data : unknown= await response.json();
+
+  if(typeof data === "object" && data != null && "name" in data){
+    console.log(data.name);
+  }
+}catch(error: unknown){
+  if(error instanceof Error){
+    console.log(error.message);
+  }else{
+    console.log("something Unexpected Happened");
+  }
 }
+}
+
+getUser();
