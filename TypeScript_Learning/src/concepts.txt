@@ -5,4 +5,8 @@ Index Signatures
 TypeScript Utilities Types: 
     Record
     Partial
+Type Literals
+    String Literal Types
+    Number Literal Types
+    Enum Literal Types
     
