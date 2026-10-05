@@ -21,3 +21,7 @@ Union Types
     Exhaustiveness Checking
     Exhaustive Type Checking with never
     Exhaustive Type Checking with assertNever
+Intersection Types
+    Intersection Type Narrowing
+    Intersection Type with Generics
+    Intersection Type with Mapped Types
