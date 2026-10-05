@@ -25,3 +25,8 @@ Intersection Types
     Intersection Type Narrowing
     Intersection Type with Generics
     Intersection Type with Mapped Types
+Tuple Types
+    Tuple Type Narrowing
+    Tuple Type with Rest Elements
+    Tuple Type with Optional Elements
+    Tuple Type with Readonly Elements
