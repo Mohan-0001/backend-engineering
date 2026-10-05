@@ -10,4 +10,14 @@ Type Literals
     Number Literal Types
     Enum Literal Types
 Type Assertions
-as_const
+    Non-null Assertion Operator (at the end of an expression -> type "!" this will tell the compiler that the value is not null or undefined)
+    Type Assertions with 'as'
+    Angle-bracket Syntax
+as const
+    const assertions (as const)
+Union Types
+    Union Type Narrowing
+    Discriminated Unions
+    Exhaustiveness Checking
+    Exhaustive Type Checking with never
+    Exhaustive Type Checking with assertNever
