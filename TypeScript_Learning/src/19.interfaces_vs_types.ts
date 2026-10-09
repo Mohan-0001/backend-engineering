@@ -51,7 +51,7 @@ type Bag = { size: number };
 
 // A. Primitive Aliases (Interface cannot define standalone primitive types)
 type UserID = string | number;
-type Status = "pending" | "approved" | "rejected"; // String Literal Union
+type Status3 = "pending" | "approved" | "rejected"; // String Literal Union
 
 // B. Unions & Intersections (Interface cannot represent raw unions directly)
 type Circle = { radius: number };
@@ -60,15 +60,15 @@ type Shape = Circle | Square; // Union Type
 
 type Printable = { print: () => void };
 type Auditable = { createdAt: Date };
-type Document = Printable & Auditable; // Intersection Type
+type Document1 = Printable & Auditable; // Intersection Type
 
 // C. Tuples (Interface cannot cleanly represent fixed-length positional arrays)
 type Point2D = [x: number, y: number];
-const origin: Point2D = [0, 0];
+const origin1: Point2D = [0, 0];
 
 // D. Function Types (Type syntax is cleaner for standalone function signatures)
 type MathFn = (a: number, b: number) => number;
-const add: MathFn = (a, b) => a + b;
+const add1: MathFn = (a, b) => a + b;
 
 
 // ============================================================================
