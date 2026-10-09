@@ -6,7 +6,7 @@ function func1(a: number, b: number) {
 } 
 
 // 2. Contextual Typing (Implicit Contextual Inference)
-const nums12 =; 
+const nums12 =[1,2,3]; 
 // Because 'nums12' is known to be an array of numbers, TypeScript contextually 
 // infers that 'n' inside the .map() callback must be a 'number'. You don't need to type it.
 const doubled = nums12.map(n => n * 2); 
