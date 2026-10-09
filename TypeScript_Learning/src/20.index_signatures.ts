@@ -50,16 +50,22 @@ priceMap.set("likes", 1);
 //    - Adding 'undefined' forces you to check if the value exists before using it.
 // ============================================================================
 
+
 type LooseMap = Record<string, number | undefined>;
-
 const lm: LooseMap = {};
-lm["x"] = undefined; // ✅ Explicitly setting undefined
-lm["y"] = 100;       // ✅ Valid number
 
-// Safe usage with runtime check:
-const value = lm["x"]; // Type: number | undefined
+// 🔴 IMPOSSIBLE FLOW (Dead Code Detection)
+lm["x"] = undefined;
+// if (lm["x"] !== undefined) {
+//   // TS thinks: Unreachable! 'lm["x"]' type becomes 'never'
+//   console.log(lm["x"].toFixed(2)); // ❌ Error on 'never'
+// }
 
-if (value !== undefined) {
-  // Yahan TypeScript ko confirm pata hai ki 'value' exact 'number' hai!
-  console.log(value.toFixed(2)); // ✅ Works perfectly!
+// 🟢 POSSIBLE FLOW (Dynamic Value)
+lm["x"] = Math.random() > 0.5 ? 100 : undefined;
+const val = lm["x"];
+
+if (val !== undefined) {
+  // TS thinks: Reachable! 'val' is guaranteed to be 'number'
+  console.log(val.toFixed(2)); // ✅ Works cleanly!
 }
