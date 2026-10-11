@@ -1,6 +1,7 @@
 import { UserCard } from "./components/01.Required_Optioonal_Props"
 import { GreetA, GreetB } from "./components/02.DefaultProps"
 import { Panel, RequiredChildrenPanel } from "./components/03.ChildrenReactNode"
+import { Badge } from "./components/04.AsConstVariables"
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
       <RequiredChildrenPanel title="Hello">
         Some Content here 
       </RequiredChildrenPanel>
+
+      <Badge lable="This is without variaants label"/>
+      <Badge lable="this is with Variant" variant="secondary"/>
     </>
   )
 }
