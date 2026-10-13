@@ -2,6 +2,7 @@ import { UserCard } from "./components/01.Required_Optioonal_Props"
 import { GreetA, GreetB } from "./components/02.DefaultProps"
 import { Panel, RequiredChildrenPanel } from "./components/03.ChildrenReactNode"
 import { Badge } from "./components/04.AsConstVariables"
+import { Button } from "./components/05.ComponentProps"
 
 function App() {
   return (
@@ -23,6 +24,9 @@ function App() {
 
       <Badge lable="This is without variaants label"/>
       <Badge lable="this is with Variant" variant="secondary"/>
+
+
+      <Button variant="primary" onClick={() => {alert('Clicked')}}>Text</Button>
     </>
   )
 }
