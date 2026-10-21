@@ -5,6 +5,7 @@ export const metadata: Metadata = {
     default: "Dashboard",
     template: "%s | Dashboard",
   },
+  description: "All about your data is manage here."
 };
 
 export default function DashboardLayout({
