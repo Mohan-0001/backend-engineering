@@ -3,6 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import connectDb from "./db";
 import bcrypt from "bcryptjs";
 import User from "@/models/user.model";
+import GoogleProvider from "next-auth/providers/google";
 
 const authOptions: NextAuthOptions = {
     providers: [
@@ -53,9 +54,38 @@ const authOptions: NextAuthOptions = {
                 };
             },
         }),
+
+        GoogleProvider({
+            clientId: process.env.GOOGLE_CLIENT_ID!,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET!
+        })
     ],
 
     callbacks: {
+
+        // google signIn Callback
+        async signIn({ user, account }) {
+            if (account?.provider === "google") {
+                await connectDb();
+
+                let dbUser = await User.findOne({
+                    email: user.email,
+                });
+
+                if (!dbUser) {
+                    dbUser = await User.create({
+                        name: user.name,
+                        email: user.email,
+                        image: user.image,
+                    });
+                }
+
+                user.id = dbUser._id.toString();
+            }
+
+            return true;
+        },
+
         async jwt({ token, user }) {
             if (user) {
                 token.id = user.id;
@@ -82,7 +112,7 @@ const authOptions: NextAuthOptions = {
         signIn: "/login",
     },
 
-    secret: process.env.NEXT_AUTH_SECRET,
+    secret: process.env.NEXTAUTH_SECRET,
 };
 
 export default authOptions
