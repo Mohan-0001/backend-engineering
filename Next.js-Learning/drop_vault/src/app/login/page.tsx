@@ -40,7 +40,7 @@ function Login() {
     return (
         <div className='min-h-screen flex items-center justify-center bg-black text-white px-4'>
             <div className='w-full max-w-md border border-white rounded-2xl bg-gray-900 p-8'>
-                <h1 className='text-3xl font-bold text-center mb-6'>LogInr</h1>
+                <h1 className='text-3xl font-bold text-center mb-6'>LogIn</h1>
                 <form onSubmit={handleSignIn} className='flex flex-col gap-4'>
                     <div className='flex flex-col gap-1'>
                         <label className='text-sm text-zinc-300'>Email</label>
