@@ -86,9 +86,21 @@ const authOptions: NextAuthOptions = {
             return true;
         },
 
-        async jwt({ token, user }) {
+        async jwt({ token, user, trigger }) {
             if (user) {
                 token.id = user.id;
+            }
+
+            if (trigger === "update" && token.id) {
+                await connectDb();
+
+                const dbUser = await User.findById(token.id)
+                    .select("name image");
+
+                if (dbUser) {
+                    token.name = dbUser.name;
+                    token.picture = dbUser.image;
+                }
             }
 
             return token;
@@ -97,10 +109,12 @@ const authOptions: NextAuthOptions = {
         async session({ session, token }) {
             if (session.user) {
                 session.user.id = token.id as string;
+                session.user.name = token.name;
+                session.user.image = token.picture as string | null;
             }
 
             return session;
-        },
+        }
     },
 
     session: {
@@ -108,11 +122,11 @@ const authOptions: NextAuthOptions = {
         maxAge: 30 * 24 * 60 * 60,
     },
 
-    pages: {
-        signIn: "/login",
+pages: {
+    signIn: "/login",
     },
 
-    secret: process.env.NEXTAUTH_SECRET,
+secret: process.env.NEXTAUTH_SECRET,
 };
 
 export default authOptions
